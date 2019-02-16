@@ -1,7 +1,7 @@
 
 from __future__ import print_function
 
-from plotting import BColors
+from .plotting import BColors
 
 import lasagne
 import numpy as np
@@ -31,4 +31,3 @@ def print_architecture(net):
             class_name = col.print_colored(class_name, BColors.WARNING)
 
         print(class_name, l.output_shape)
-

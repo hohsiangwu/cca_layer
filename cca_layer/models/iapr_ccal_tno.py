@@ -63,13 +63,13 @@ def get_build_model(weight_tno, alpha, dim_latent, use_ccal):
         net2 = l_view2
 
         # --- feed forward part view 1 ---
-        for _ in xrange(N_LAYERS_IMG):
+        for _ in range(N_LAYERS_IMG):
             net1 = dense_bn(net1, num_units=N_HIDDEN_IMG, nonlinearity=nonlin)
 
         l_v1latent = DenseLayer(net1, num_units=dim_latent, nonlinearity=identity, W=init())
 
         # --- feed forward part view 2 ---
-        for _ in xrange(N_LAYERS_TXT):
+        for _ in range(N_LAYERS_TXT):
             net2 = dense_bn(net2, num_units=N_HIDDEN_TXT, nonlinearity=nonlin)
 
         l_v2latent = DenseLayer(net2, num_units=dim_latent, nonlinearity=identity, W=init())
@@ -105,7 +105,7 @@ build_model = get_build_model(weight_tno=WEIGHT_TNO, alpha=ALPHA, dim_latent=DIM
 
 def objectives():
     """ Compile objectives """
-    from objectives import get_contrastive_cos_loss
+    from .objectives import get_contrastive_cos_loss
     return get_contrastive_cos_loss(1.0 - WEIGHT_TNO, 0.0)
 
 
